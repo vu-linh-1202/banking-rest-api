@@ -7,7 +7,6 @@ import com.hcl.bankingrestapi.customer.entity.Customer;
 import com.hcl.bankingrestapi.customer.mapper.CustomerMapper;
 import com.hcl.bankingrestapi.customer.service.entityservice.CustomerEntityService;
 import lombok.RequiredArgsConstructor;
-import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
