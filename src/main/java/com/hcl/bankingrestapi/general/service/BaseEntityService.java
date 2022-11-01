@@ -4,7 +4,9 @@ import com.hcl.bankingrestapi.general.entity.BaseAdditionalFields;
 import com.hcl.bankingrestapi.general.entity.BaseEntity;
 import com.hcl.bankingrestapi.general.enums.GenErrorMessage;
 import com.hcl.bankingrestapi.general.exception.ItemNotFoundException;
+import com.hcl.bankingrestapi.security.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,12 @@ public abstract class BaseEntityService<E extends BaseEntity, D extends JpaRepos
     private final D dao;
     private static final Integer DEFAULT_PAGE = 0;
     private static final Integer DEFAULT_SIZE = 10;
+
+    private AuthenticationService authenticationService;
+
+    public void setAuthenticationService(@Lazy AuthenticationService authenticationService){
+        this.authenticationService=authenticationService;
+    }
 
     public D getDao() {
         return dao;
@@ -104,5 +112,10 @@ public abstract class BaseEntityService<E extends BaseEntity, D extends JpaRepos
 
     public boolean existById(Long id) {
         return dao.existsById(id);
+    }
+
+    public Long getCurrentCustomerId(){
+        Long currentCustomerId= authenticationService.getCurrentCustomerId();
+        return currentCustomerId;
     }
 }

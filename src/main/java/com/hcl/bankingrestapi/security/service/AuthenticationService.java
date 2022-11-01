@@ -61,7 +61,7 @@ public class AuthenticationService {
         return customer;
     }
 
-    private Long getCurrentCustomerId() {
+    public Long getCurrentCustomerId() {
         JwtUserDetails jwtUserDetails = getCurrentJwtUserDetails();
         Long jwtUserDetailsId = null;
         if (jwtUserDetails != null) {
