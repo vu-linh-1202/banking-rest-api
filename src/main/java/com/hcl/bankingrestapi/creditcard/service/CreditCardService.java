@@ -240,7 +240,7 @@ public class CreditCardService {
         return creditCardActivity;
     }
 
-    private CreditCardActivityDto refundMoney(Long activityId) {
+    public CreditCardActivityDto refundMoney(Long activityId) {
         CreditCardActivity oldCreditCardActivity = creditCardActivityEntityService.getByIdWithControl(activityId);
         Long creditCardId = oldCreditCardActivity.getCreditCardId();
         CreditCard creditCard = creditCardEntityService.getByIdWithControl(creditCardId);
